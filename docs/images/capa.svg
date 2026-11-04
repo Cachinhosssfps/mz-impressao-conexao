@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="440" viewBox="0 0 1280 440" role="img" aria-label="MZ Central de Impressão — Duas etiquetas. Uma folha.">
+<rect width="1280" height="440" rx="24" fill="#101518"/>
+<circle cx="1200" cy="60" r="280" fill="#192124"/>
+<circle cx="1200" cy="60" r="220" fill="none" stroke="#293335" stroke-width="1"/>
+<rect x="56" y="48" width="76" height="64" rx="16" fill="#f8e62c"/>
+<text x="94" y="91" font-family="Arial, sans-serif" font-weight="900" font-style="italic" font-size="32" text-anchor="middle" fill="#101518">MZ</text>
+<text x="152" y="75" font-family="Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="3" fill="#d0d7da">RODAS E PNEUS</text>
+<text x="152" y="101" font-family="Arial, sans-serif" font-size="15" fill="#9eabad">CENTRAL DE IMPRESSÃO</text>
+<text x="56" y="197" font-family="Arial, sans-serif" font-size="52" font-weight="700" fill="#ffffff">Duas etiquetas.</text>
+<text x="56" y="260" font-family="Arial, sans-serif" font-size="52" font-weight="700" fill="#f8e62c">Uma folha.</text>
+<text x="58" y="306" font-family="Arial, sans-serif" font-size="20" fill="#bdc8cc">Pedidos do Mercado Livre em uma fila organizada.</text>
+<rect x="56" y="354" width="126" height="32" rx="16" fill="#253033"/>
+<text x="119" y="375" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#e5ecee" text-anchor="middle">PYTHON + QT</text>
+<text x="202" y="375" font-family="Arial, sans-serif" font-size="14" fill="#bdc8cc">OAuth 2.0 · SQLite · A4</text>
+<g transform="translate(910 75) rotate(7 110 140)">
+<rect x="8" y="10" width="200" height="282" rx="14" fill="#080c0e" opacity="0.4"/>
+<rect width="200" height="282" rx="14" fill="#f6f8f9"/>
+<path d="M16 141H184" stroke="#bbc5c9" stroke-width="2" stroke-dasharray="6 6"/>
+<rect x="22" y="22" width="156" height="96" rx="8" fill="#e4eaed"/>
+<rect x="22" y="164" width="156" height="96" rx="8" fill="#e4eaed"/>
+<g fill="#52626b"><rect x="38" y="38" width="65" height="7" rx="3"/><rect x="38" y="52" width="100" height="5" rx="2"/><rect x="38" y="180" width="65" height="7" rx="3"/><rect x="38" y="194" width="100" height="5" rx="2"/></g>
+<g stroke="#26353b" stroke-width="4"><path d="M40 73V99 M49 73V99 M62 73V99 M69 73V99 M83 73V99 M93 73V99 M102 73V99 M116 73V99 M124 73V99 M137 73V99 M150 73V99"/><path d="M40 215V241 M49 215V241 M62 215V241 M69 215V241 M83 215V241 M93 215V241 M102 215V241 M116 215V241 M124 215V241 M137 215V241 M150 215V241"/></g>
+</g>
+</svg>
