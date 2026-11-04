@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-M6kR4Xx6jGv3w3dsmyOOF6R6eVooMFkj9xKyz3V5rp4='; style-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MZ Rodas e Pneus | Retorno de autorização</title>
+<style>
+*{box-sizing:border-box}body{margin:0;padding:32px 18px;background:#f5f5f3;color:#1a1a1a;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.6}main{max-width:720px;margin:32px auto}header{background:#0a0a0a;color:white;padding:26px;border-radius:18px 18px 0 0;display:flex;align-items:center;gap:16px}.logo{background:#f8e62c;color:#161600;padding:10px 14px;border-radius:10px;font-size:22px;font-weight:900}header strong{font-size:21px}header p{margin:2px 0 0;color:#b8b8b0;font-size:13px}section{background:white;border:1px solid #e6e5e0;border-top:0;padding:30px;border-radius:0 0 18px 18px}h1{font-size:25px;line-height:1.3;margin:0 0 14px}p{margin:0 0 18px}label{font-weight:650;font-size:14px}textarea{display:block;width:100%;margin:10px 0 16px;min-height:110px;resize:vertical;border:1px solid #d5d4cf;border-radius:10px;padding:12px;font:13px monospace;color:#1a1a1a;background:#fafaf8}button{font:650 14px system-ui;padding:13px 16px;border-radius:9px;cursor:pointer;border:1px solid #e6e5e0;background:white;margin:0 8px 10px 0}button.primary{background:#f8e62c;border-color:#f8e62c;color:#161600}button:focus-visible,textarea:focus-visible{outline:3px solid #9b8d00;outline-offset:3px}.note{color:#6a6a65;font-size:13px;margin-top:15px}footer{color:#767671;text-align:center;font-size:12px;margin-top:20px}#feedback{font-size:14px;color:#1b7a43;margin-top:10px}[hidden]{display:none!important}
+</style></head><body><main>
+<header><span class="logo">MZ</span><div><strong>MZ Rodas e Pneus</strong><p>Conexão com o Mercado Livre</p></div></header>
+<section><h1 id="title">Retorno de autorização</h1><p id="message">Esta página recebe a autorização iniciada pelo programa da MZ.</p>
+<div id="result" hidden><label for="returned">Retorno para colar no programa</label><textarea id="returned" readonly spellcheck="false" autocomplete="off" aria-describedby="instructions"></textarea>
+<p id="instructions">Copie o retorno, volte ao programa da MZ e cole no campo <strong>URL final após autorizar</strong>. Depois clique em <strong>Concluir conexão</strong>.</p>
+<button id="copy" class="primary" type="button">Copiar retorno</button><button id="clear" type="button">Já concluí: limpar esta página</button><p id="feedback" role="status" aria-live="polite"></p>
+<p class="note">O retorno contém um código temporário de autorização. Cole somente no programa instalado. Não envie pelo chat, WhatsApp ou e-mail.</p></div>
+<p class="note">Esta página não pede senha nem Client Secret. A troca do código por tokens e a conferência da sessão acontecem no programa do seu computador.</p>
+<noscript>Ative o JavaScript para visualizar e copiar o retorno da autorização.</noscript></section>
+<footer>MZ Rodas e Pneus · Impressão de pedidos</footer></main>
+<script>(() => {
+  const title = document.getElementById('title');
+  const message = document.getElementById('message');
+  const field = document.getElementById('returned');
+  const box = document.getElementById('result');
+  const copy = document.getElementById('copy');
+  const clear = document.getElementById('clear');
+  const feedback = document.getElementById('feedback');
+  const original = new URL(window.location.href);
+  const params = original.searchParams;
+  const hasReturn = params.has('code') || params.has('state') || params.has('error');
+  if (hasReturn) {
+    try { window.history.replaceState(null, '', original.pathname); } catch (_) {}
+  }
+  if (params.has('error')) {
+    title.textContent = 'A autorização não foi concluída';
+    message.textContent = 'Volte ao programa da MZ e inicie uma nova autorização no navegador.';
+    return;
+  }
+  const code = params.get('code');
+  const state = params.get('state');
+  if (!code || !state || original.href.length > 8192) {
+    title.textContent = hasReturn ? 'Retorno incompleto' : 'Página de conexão pronta';
+    message.textContent = hasReturn
+      ? 'Volte ao programa da MZ e inicie uma nova autorização. Não tente preencher o código manualmente.'
+      : 'Este é o endereço de retorno da MZ Rodas e Pneus. A conexão deve começar pelo botão “Abrir autorização no navegador” do programa instalado.';
+    return;
+  }
+  title.textContent = 'Autorização recebida';
+  message.textContent = 'Agora conclua a conexão no programa instalado. A página sozinha não conecta sua loja nem confirma a validade da autorização.';
+  field.value = original.href;
+  box.hidden = false;
+  copy.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(field.value);
+      feedback.textContent = 'Copiado. Cole em “URL final após autorizar” no programa e clique em “Concluir conexão”.';
+    } catch (_) {
+      field.focus();
+      field.select();
+      feedback.textContent = 'Selecione e copie o conteúdo do campo acima com Ctrl+C no Windows ou Command+C no Mac.';
+    }
+  });
+  clear.addEventListener('click', () => {
+    field.value = '';
+    box.hidden = true;
+    title.textContent = 'Retorno removido desta página';
+    message.textContent = 'Se já concluiu a conexão no programa, pode fechar esta aba. Para obter outro código, inicie uma nova autorização pelo programa.';
+  });
+})();</script></body></html>
